@@ -1,6 +1,5 @@
 #include <iostream>
 #include <chrono>
-#include <cmath>
 #include <vector>
 #include "shared.hpp"
 
@@ -28,7 +27,6 @@ int main() {
     for (size_t i = 0; i < static_cast<size_t>(n); ++i) {
         t_nodes.push_back(dt * static_cast<double>(i));
     }
-    steady_clock::time_point t1a = steady_clock::now();
     double res = integrate(t_nodes);
 
     steady_clock::time_point t2 = steady_clock::now();
@@ -40,7 +38,5 @@ int main() {
          << "result = "             << res << '\n'
          << "computation takes "    << time_span.count() << " seconds\n";
 
-    time_span = duration_cast<duration<double>>(t1a - t1);
-    cout << time_span.count() << " s\n";
     return 0;
 }
