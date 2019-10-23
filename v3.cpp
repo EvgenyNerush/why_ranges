@@ -5,18 +5,14 @@
 using namespace std;
 using namespace std::chrono;
 
-// number of intervals for numerical integration
-long long n = llround(tau / dT);
-double dt = tau / static_cast<double>(n - 1);
-
+// trapezoidal rule of integration with fixed time step
 template <typename T>
 double integrate(T t_nodes) {
-    // trapezoidal rule of integration with fixed time step
     double acc = 0;
     for(auto t: t_nodes) {
-        acc += dt * f(t);
+        acc += dt_fixed * f(t);
     }
-    acc -= 0.5 * dt * f(tau);
+    acc -= 0.5 * dt_fixed * f(tau);
     return acc;
 }
 
@@ -24,7 +20,7 @@ class lazy_container {
     public:
         long long int n_nodes;
         lazy_container() {
-            n_nodes = n;
+            n_nodes = n_fixed;
         }
         ~lazy_container() {}
         class iterator {
@@ -37,7 +33,7 @@ class lazy_container {
                 iterator& operator++()                          { i+= 1; return *this; }
                 bool      operator!=(const iterator& rhs) const { return i != rhs.i; }
                 double    operator* ()                    const
-                    { return dt * static_cast<double>(i); }
+                    { return dt_fixed * static_cast<double>(i); }
         };
         iterator begin() {
             return iterator();
@@ -60,8 +56,8 @@ int main() {
     duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 
     cout << "\x1b[32mv3\x1b[0m\n"
-         << "number of timesteps: " << n   << '\n'
-         << "result = "             << res << '\n'
+         << "number of timesteps: " << n_fixed           << '\n'
+         << "result = "             << res               << '\n'
          << "computation takes "    << time_span.count() << " seconds\n";
 
     return 0;

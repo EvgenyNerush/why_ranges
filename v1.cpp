@@ -5,18 +5,14 @@
 using namespace std;
 using namespace std::chrono;
 
-// number of intervals for numerical integration
-long long n = llround(tau / dT);
-
+// trapezoidal rule of integration with fixed time step
 double integrate() {
-    // trapezoidal rule of integration with fixed time step
-    double dt = tau / static_cast<double>(n - 1);
     double acc = 0;
-    for(long long i = 1; i < n - 1; ++i) {
-        double t = dt * static_cast<double>(i);
-        acc += dt * f(t);
+    for(long long i = 1; i < n_fixed - 1; ++i) {
+        double t = dt_fixed * static_cast<double>(i);
+        acc += dt_fixed * f(t);
     }
-    acc += 0.5 * dt * f(tau);
+    acc += 0.5 * dt_fixed * f(tau);
     return acc;
 }
 
@@ -27,8 +23,8 @@ int main() {
     duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 
     cout << "\x1b[32mv1\x1b[0m\n"
-         << "number of timesteps: " << n   << '\n'
-         << "result = "             << res << '\n'
+         << "number of timesteps: " << n_fixed           << '\n'
+         << "result = "             << res               << '\n'
          << "computation takes "    << time_span.count() << " seconds\n";
     return 0;
 }

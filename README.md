@@ -5,7 +5,7 @@ methods to answer the following question: are the C++20 ranges suitable to be us
 distributed nodes of trapezoidal rule of integration?
 
 To compile `v4.cpp` and `v5.cpp` one need to copy/clone
-[range-v3](https://github.com/ericniebler/range-v3) source into `range-v3` folder.
+[range-v3](https://github.com/ericniebler/range-v3) source into this folder.
 
 ### v1.cpp
 
@@ -24,6 +24,10 @@ every time when `++` is called for it.
 ### v4.cpp
 
 `iota_view` and `transform` from `ranges-v3` are used instead of the iterator.
+
+### v5.cpp
+
+`ranges-v3` are used, but the timestep is non-constant.
 
 ## Results
 

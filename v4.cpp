@@ -8,27 +8,23 @@
 using namespace std;
 using namespace std::chrono;
 
-// number of intervals for numerical integration
-long long n = llround(tau / dT);
-double dt = tau / static_cast<double>(n - 1);
-
+// trapezoidal rule of integration with fixed time step
 template <typename T>
 double integrate(T t_nodes) {
-    // trapezoidal rule of integration with fixed time step
     double acc = 0;
     for(auto t: t_nodes) {
-        acc += dt * f(t);
+        acc += dt_fixed * f(t);
     }
-    acc -= 0.5 * dt * f(tau);
+    acc -= 0.5 * dt_fixed * f(tau);
     return acc;
 }
 
 int main() {
     steady_clock::time_point t1 = steady_clock::now();
 
-    auto t_nodes = ranges::v3::iota_view(0, n)
+    auto t_nodes = ranges::v3::iota_view(0, n_fixed)
                  | ranges::v3::views::transform(
-                         [](long long i){ return dt * static_cast<double>(i); }
+                         [](long long i){ return dt_fixed * static_cast<double>(i); }
                    );
     double res = integrate(t_nodes);
 
@@ -37,8 +33,8 @@ int main() {
     duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
 
     cout << "\x1b[32mv4\x1b[0m\n"
-         << "number of timesteps: " << n   << '\n'
-         << "result = "             << res << '\n'
+         << "number of timesteps: " << n_fixed           << '\n'
+         << "result = "             << res               << '\n'
          << "computation takes "    << time_span.count() << " seconds\n";
 
     return 0;
