@@ -1,5 +1,6 @@
 CXX := g++ -O3 -ffast-math -std=c++2a -Wall -Wpedantic -I range-v3/include
 #CXX := clang++ -Ofast -std=c++2a -Wall -Wpedantic -I range-v3/include
+#CXX := g++ -g -std=c++2a -Wall -Wpedantic -I range-v3/include
 DEP := shared.hpp
 BIN := v1 v2 v3 v4 v5
 FLAGS := 

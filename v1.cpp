@@ -12,6 +12,7 @@ double integrate() {
         double t = dt_fixed * static_cast<double>(i);
         acc += dt_fixed * f(t);
     }
+    acc += 0.5 * dt_fixed * f(0);
     acc += 0.5 * dt_fixed * f(tau);
     return acc;
 }

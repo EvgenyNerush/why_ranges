@@ -15,6 +15,7 @@ double integrate(vector<double> t_nodes) {
     for(auto t: t_nodes) {
         acc += dt_fixed * f(t);
     }
+    acc -= 0.5 * dt_fixed * f(0);
     acc -= 0.5 * dt_fixed * f(tau);
     return acc;
 }

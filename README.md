@@ -31,3 +31,29 @@ every time when `++` is called for it.
 
 ## Results
 
+For Xeon X5550, time in seconds.
+
+O3, ffast-math:
+
+<table>
+    <tr>
+        <td></td>        <td>v1</td>  <td>v2</td>  <td>v3</td>  <td>v4</td>  <td>v5</td>
+    </tr>
+    <tr>
+        <td>g++</td>     <td>4.7</td> <td>6.7</td> <td>4.6</td> <td>3.7</td> <td>4.3</td>
+    </tr>
+    <tr>
+        <td>clang++</td> <td>5.0</td> <td>7.2</td> <td>4.6</td> <td>4.8</td> <td>4.1</td>
+    </tr>
+</table>
+
+debug mode:
+
+<table>
+    <tr>
+        <td></td>        <td>v1</td>  <td>v2</td>   <td>v3</td>  <td>v4</td>   <td>v5</td>
+    </tr>
+    <tr>
+        <td>g++</td>     <td>5.9</td> <td>17.8</td> <td>7.2</td> <td>33.6</td> <td>14.3</td>
+    </tr>
+</table>
