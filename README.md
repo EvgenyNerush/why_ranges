@@ -29,6 +29,10 @@ every time when `++` is called for it.
 
 `ranges-v3` are used, but the timestep is non-constant.
 
+### v6.cpp
+
+`while` loop with `generator()` for the next step.
+
 ## Results
 
 For Xeon X5550, time in seconds.
@@ -37,13 +41,13 @@ O3, ffast-math:
 
 <table>
     <tr>
-        <td></td>        <td>v1</td>  <td>v2</td>  <td>v3</td>  <td>v4</td>  <td>v5</td>
+        <td></td>        <td>v1</td>  <td>v2</td>  <td>v3</td>  <td>v4</td>  <td>v5</td>  <td>v6</td>
     </tr>
     <tr>
-        <td>g++</td>     <td>4.7</td> <td>6.7</td> <td>4.6</td> <td>3.7</td> <td>4.3</td>
+        <td>g++</td>     <td>4.7</td> <td>6.7</td> <td>4.6</td> <td>3.7</td> <td>4.3</td> <td>4.4</td>
     </tr>
     <tr>
-        <td>clang++</td> <td>5.0</td> <td>7.2</td> <td>4.6</td> <td>4.8</td> <td>4.1</td>
+        <td>clang++</td> <td>5.0</td> <td>7.2</td> <td>4.6</td> <td>4.8</td> <td>4.1</td> <td>4.5</td>
     </tr>
 </table>
 

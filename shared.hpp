@@ -14,7 +14,7 @@ const double a = 0.1;
 const double dT = a * 2 * M_PI / (3 * tau * tau);
 
 // number of intervals for numerical integration with fixed time step
-long long n_fixed = llround(tau / dT);
+const long long n_fixed = llround(tau / dT);
 
 // time step which do not depend on the step number
-double dt_fixed = tau / static_cast<double>(n_fixed - 1);
+const double dt_fixed = tau / static_cast<double>(n_fixed - 1);
